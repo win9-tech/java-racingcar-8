@@ -19,5 +19,8 @@ public class RacingGameController {
     public void run() {
         String rawCarNames = applicationView.readCarNames();
         List<String> carNames = InputParser.parseCarNames(rawCarNames);
+
+        String rawTryCount = applicationView.readTryCount();
+        int tryCount = InputParser.parseTryCount(rawTryCount);
     }
 }

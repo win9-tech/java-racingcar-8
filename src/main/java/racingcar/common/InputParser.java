@@ -13,4 +13,12 @@ public class InputParser {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
+
+    public static int parseTryCount(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
 }
