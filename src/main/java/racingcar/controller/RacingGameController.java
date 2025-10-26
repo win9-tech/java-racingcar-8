@@ -1,8 +1,10 @@
 package racingcar.controller;
 
+import racingcar.common.InputParser;
 import racingcar.application.RacingGameFacade;
 import racingcar.view.ApplicationView;
 
+import java.util.List;
 
 public class RacingGameController {
 
@@ -16,5 +18,6 @@ public class RacingGameController {
 
     public void run() {
         String rawCarNames = applicationView.readCarNames();
+        List<String> carNames = InputParser.parseCarNames(rawCarNames);
     }
 }
