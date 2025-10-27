@@ -32,4 +32,8 @@ public class Cars {
         for (Car car : cars) carStatuses.add(new CarStatus(car.getName(), car.getPosition()));
         return List.copyOf(carStatuses);
     }
+
+    public int getCarCount() {
+        return cars.size();
+    }
 }
