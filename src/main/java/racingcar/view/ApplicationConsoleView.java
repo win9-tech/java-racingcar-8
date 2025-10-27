@@ -1,7 +1,11 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.application.dto.response.CarStatus;
+import racingcar.application.dto.response.RaceResult;
 import racingcar.application.dto.response.RoundResult;
+
+import java.util.List;
 
 public class ApplicationConsoleView implements ApplicationView {
 
@@ -19,12 +23,15 @@ public class ApplicationConsoleView implements ApplicationView {
     }
 
     @Override
-    public void printRoundResult(RoundResult result) {
-        System.out.println("실행 결과");
-        result.getCarStatuses().forEach(status ->
-                System.out.println(status.name() + " : " + "-".repeat(status.position()))
-        );
-        System.out.println();
+    public void printRoundResult(List<RoundResult> rounds) {
+        System.out.println("\n실행 결과");
+
+        for (RoundResult round : rounds) {
+            for (CarStatus status : round.getCarStatuses()) {
+                System.out.println(status.name() + " : " + "-".repeat(status.position()));
+            }
+            System.out.println();
+        }
     }
 
     @Override

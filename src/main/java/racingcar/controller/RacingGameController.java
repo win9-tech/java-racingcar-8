@@ -29,8 +29,6 @@ public class RacingGameController {
         RacingGameRequest request = new RacingGameRequest(carNames, tryCount);
         RaceResult raceResult = racingGameFacade.playGame(request);
 
-        for (RoundResult round : raceResult.getRoundResults()) {
-            applicationView.printRoundResult(round);
-        }
+        applicationView.printRoundResult(raceResult.getRoundResults());
     }
 }
