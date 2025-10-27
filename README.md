@@ -89,10 +89,10 @@ jun : -----
 1. 자동차 이름 입력 기능
 2. 시도 횟수 입력 기능
 3. 쉼표 기준 자동차 구분 기능
-4. 자동차 전진/정지 기능
-5. 자동차 현 상태 출력 기능
-6. 자동차 상태 저장 기능 
-7. 우승자 선정 기능 
+4. 자동차 상태 저장 기능
+5. 자동차 전진/정지 기능
+6. 우승자 선정 기능 
+7. 라운드별 자동차 상태 출력 기능
 8. 우승자 출력 기능
 
 ## 예외처리
@@ -100,3 +100,43 @@ jun : -----
 1. 자동차 이름 자릿수(5) 초과 예외
 2. 이동 횟수 입력 형식 예외 (문자, 특수문자, 공백)
 3. 자동차 이름 중복 예외
+
+---
+
+## 패키지 구조
+
+```
+src
+└── main
+└── java
+└── racingcar
+├── application
+│   ├── dto
+│   │   ├── request
+│   │   │   └── RacingGameRequest.java       # 게임 실행 요청 DTO
+│   │   └── response
+│   │       ├── CarStatus.java               # 각 자동차의 이름/위치 상태 DTO
+│   │       ├── RaceResult.java              # 전체 경기 결과 DTO
+│   │       └── RoundResult.java             # 라운드별 결과 DTO
+│   ├── RacingGameExecutor.java              # 실제 경기 라운드 진행 로직
+│   └── RacingGameFacade.java                # 파사드: 게임 전체 흐름 관리 (검증 → 실행)
+│
+├── common
+│   ├── config                               # (환경 설정 관련 클래스)
+│   └── parser
+│       └── InputParser.java                 # 사용자 입력 파싱 및 기본 검증
+│
+├── controller
+│   └── RacingGameController.java            # 입력 → 실행 → 출력 제어
+│
+├── domain
+│   ├── Car.java                             # 자동차 객체
+│   ├── Cars.java                            # 일급 컬렉션, 자동차 집합 관리
+│   └── Race.java                            # 전체 경기 상태 및 진행 관리
+│
+├── view
+│   ├── ApplicationConsoleView.java          # 콘솔 입출력 구현체
+│   └── ApplicationView.java                 # 뷰 인터페이스
+│
+└── Application.java                         # 프로그램 진입점
+```
