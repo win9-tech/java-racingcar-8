@@ -108,35 +108,40 @@ jun : -----
 ```
 src
 └── main
-└── java
-└── racingcar
-├── application
-│   ├── dto
-│   │   ├── request
-│   │   │   └── RacingGameRequest.java       # 게임 실행 요청 DTO
-│   │   └── response
-│   │       ├── CarStatus.java               # 각 자동차의 이름/위치 상태 DTO
-│   │       ├── RaceResult.java              # 전체 경기 결과 DTO
-│   │       └── RoundResult.java             # 라운드별 결과 DTO
-│   ├── RacingGameExecutor.java              # 실제 경기 라운드 진행 로직
-│   └── RacingGameFacade.java                # 파사드: 게임 전체 흐름 관리 (검증 → 실행)
-│
-├── common
-│   ├── config                               # (환경 설정 관련 클래스)
-│   └── parser
-│       └── InputParser.java                 # 사용자 입력 파싱 및 기본 검증
-│
-├── controller
-│   └── RacingGameController.java            # 입력 → 실행 → 출력 제어
-│
-├── domain
-│   ├── Car.java                             # 자동차 객체
-│   ├── Cars.java                            # 일급 컬렉션, 자동차 집합 관리
-│   └── Race.java                            # 전체 경기 상태 및 진행 관리
-│
-├── view
-│   ├── ApplicationConsoleView.java          # 콘솔 입출력 구현체
-│   └── ApplicationView.java                 # 뷰 인터페이스
-│
-└── Application.java                         # 프로그램 진입점
+    └── java
+        └── racingcar
+            ├── application
+            │   ├── dto
+            │   │   ├── request
+            │   │   │   └── RacingGameRequest.java       # 게임 실행 요청 DTO
+            │   │   └── response
+            │   │       ├── CarStatus.java               # 각 자동차의 이름/위치 상태 DTO
+            │   │       ├── RaceResult.java              # 전체 경기 결과 DTO
+            │   │       └── RoundResult.java             # 라운드별 결과 DTO
+            │   ├── RacingGameExecutor.java              # 게임 라운드 진행 로직
+            │   └── RacingGameFacade.java                # 파사드: 입력 검증 → 경기 실행
+            │
+            ├── common
+            │   ├── config
+            │   │   └── AppConfig.java                   # 객체 생성 및 의존성 주입 설정
+            │   ├── constant
+            │   │   ├── ErrorMessage.java                # 예외 메시지 상수 관리
+            │   │   ├── GameRules.java                   # 도메인 규칙/상수 (이름 길이, 난수 범위 등)
+            │   │   └── UiMessage.java                   # 콘솔 출력 메시지 상수 관리
+            │   └── parser
+            │       └── InputParser.java                 # 사용자 입력 파싱 및 형식 검증
+            │
+            ├── controller
+            │   └── RacingGameController.java            # 전체 흐름 제어 (입력 → 실행 → 출력)
+            │
+            ├── domain
+            │   ├── Car.java                             # 자동차 객체
+            │   ├── Cars.java                            # 일급 컬렉션, 자동차 집합 관리
+            │   └── Race.java                            # 전체 경기 상태 및 우승자 계산
+            │
+            ├── view
+            │   ├── ApplicationConsoleView.java          # 콘솔 기반 뷰 구현체
+            │   └── ApplicationView.java                 # 뷰 인터페이스
+            │
+            └── Application.java                         # 프로그램 진입점 (main)
 ```

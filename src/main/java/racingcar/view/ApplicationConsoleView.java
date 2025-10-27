@@ -6,24 +6,26 @@ import racingcar.application.dto.response.RoundResult;
 
 import java.util.List;
 
+import static racingcar.common.constant.UiMessage.*;
+
 public class ApplicationConsoleView implements ApplicationView {
 
 
     @Override
     public String readCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(PROMPT_CAR_NAMES);
         return Console.readLine();
     }
 
     @Override
     public String readTryCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(PROMPT_TRY_COUNT);
         return Console.readLine();
     }
 
     @Override
     public void printRoundResult(List<RoundResult> rounds) {
-        System.out.println("\n실행 결과");
+        System.out.println(HEADER_RESULT);
 
         for (RoundResult round : rounds) {
             for (CarStatus status : round.getCarStatuses()) {
@@ -35,6 +37,6 @@ public class ApplicationConsoleView implements ApplicationView {
 
     @Override
     public void printFinalResult(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        System.out.println(FINAL_WINNERS_PREFIX + String.join(", ", winners));
     }
 }

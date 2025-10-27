@@ -6,6 +6,8 @@ import racingcar.application.dto.response.RaceResult;
 import racingcar.application.dto.response.RoundResult;
 import racingcar.domain.Race;
 
+import static racingcar.common.constant.GameRules.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class RacingGameExecutor {
     private List<Integer> generateRandomValues(int carCount) {
         List<Integer> randomValues = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            randomValues.add(Randoms.pickNumberInRange(0, 9));
+            randomValues.add(Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX));
         }
         return randomValues;
     }
