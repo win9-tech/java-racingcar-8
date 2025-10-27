@@ -6,6 +6,7 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
     }
 
@@ -21,5 +22,14 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+        }
+        if (name.trim().length() >= 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
     }
 }
