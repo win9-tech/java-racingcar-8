@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.application.dto.request.RacingGameRequest;
 import racingcar.application.dto.response.RaceResult;
+import racingcar.application.dto.response.RoundResult;
 import racingcar.common.InputParser;
 import racingcar.application.RacingGameFacade;
 import racingcar.view.ApplicationView;
@@ -27,5 +28,9 @@ public class RacingGameController {
 
         RacingGameRequest request = new RacingGameRequest(carNames, tryCount);
         RaceResult raceResult = racingGameFacade.playGame(request);
+
+        for (RoundResult round : raceResult.getRoundResults()) {
+            applicationView.printRoundResult(round);
+        }
     }
 }
