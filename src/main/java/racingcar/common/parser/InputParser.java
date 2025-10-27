@@ -14,11 +14,15 @@ public class InputParser {
         }
     }
 
-    public static int parseTryCount(String input) {
+    public static int parseTryCount(String rawInput) {
         try {
-            return Integer.parseInt(input);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
+            int count = Integer.parseInt(rawInput.trim());
+            if (count <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자로 입력해야 합니다.");
         }
     }
 }
