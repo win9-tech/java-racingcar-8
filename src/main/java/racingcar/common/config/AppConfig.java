@@ -1,4 +1,4 @@
-package racingcar.config;
+package racingcar.common.config;
 
 import racingcar.controller.RacingGameController;
 import racingcar.application.RacingGameExecutor;

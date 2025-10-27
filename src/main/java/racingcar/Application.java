@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.config.AppConfig;
+import racingcar.common.config.AppConfig;
 import racingcar.controller.RacingGameController;
 
 public class Application {
