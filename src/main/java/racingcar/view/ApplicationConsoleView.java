@@ -2,7 +2,6 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.application.dto.response.CarStatus;
-import racingcar.application.dto.response.RaceResult;
 import racingcar.application.dto.response.RoundResult;
 
 import java.util.List;
@@ -35,7 +34,7 @@ public class ApplicationConsoleView implements ApplicationView {
     }
 
     @Override
-    public void printFinalResult() {
-
+    public void printFinalResult(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }

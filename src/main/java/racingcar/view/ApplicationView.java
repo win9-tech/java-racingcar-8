@@ -13,5 +13,5 @@ public interface ApplicationView {
 
     void printRoundResult(List<RoundResult> rounds);
 
-    void printFinalResult();
+    void printFinalResult(List<String> winners);
 }
