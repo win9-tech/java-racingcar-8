@@ -11,9 +11,7 @@ import java.util.List;
 
 public class RacingGameExecutor {
 
-
-    public RacingGameExecutor() {
-    }
+    public RacingGameExecutor() {}
 
     public RaceResult run(Race race) {
         List<RoundResult> rounds = new ArrayList<>();

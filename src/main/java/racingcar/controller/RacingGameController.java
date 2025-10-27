@@ -19,16 +19,29 @@ public class RacingGameController {
     }
 
     public void run() {
+        List<String> carNames = readCarNames();
+        int tryCount = readTryCount();
+        RaceResult result = startRace(carNames, tryCount);
+        printResult(result);
+    }
+
+    private List<String> readCarNames() {
         String rawCarNames = applicationView.readCarNames();
-        List<String> carNames = InputParser.parseCarNames(rawCarNames);
+        return InputParser.parseCarNames(rawCarNames);
+    }
 
+    private int readTryCount() {
         String rawTryCount = applicationView.readTryCount();
-        int tryCount = InputParser.parseTryCount(rawTryCount);
+        return InputParser.parseTryCount(rawTryCount);
+    }
 
+    private RaceResult startRace(List<String> carNames, int tryCount) {
         RacingGameRequest request = new RacingGameRequest(carNames, tryCount);
-        RaceResult raceResult = racingGameFacade.playGame(request);
+        return racingGameFacade.playGame(request);
+    }
 
-        applicationView.printRoundResult(raceResult.getRoundResults());
-        applicationView.printFinalResult(raceResult.getWinners());
+    private void printResult(RaceResult result) {
+        applicationView.printRoundResult(result.getRoundResults());
+        applicationView.printFinalResult(result.getWinners());
     }
 }
